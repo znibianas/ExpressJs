@@ -38,7 +38,7 @@ const swaggerDocs = swaggerJSDoc(swaggerOptions)
 app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerDocs))
 
 //Connexion à la base de donnée et au serveur
-const port = 3000
+const port =process.env.PORT || 3000
 const start = async () => {
   try {
     await connectDB(process.env.MONGO_URI)

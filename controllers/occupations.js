@@ -8,13 +8,13 @@ const createOccupation = async (req, res) => {
     if (c == null) {
       occupation = await Occupation.create(req.body)
       // Créer une connexion WebSocket
-      //const socket = new WebSocket('ws://localhost:3000')
+      const socket = new WebSocket('ws://localhost:3000')
       // La connexion est ouverte
-      //socket.addEventListener('open', function (event) {
-        //socket.send('')
-      //})
+      socket.addEventListener('open', function (event) {
+        socket.send('')
+      })
       // Écouter les messages
-     // socket.addEventListener('message', function (event) {})
+      socket.addEventListener('message', function (event) {})
     } else {
       return res.send({ msg: `La salle est déjà occupée !` })
     }
